@@ -78,6 +78,8 @@ public class LRUCache<K, V> implements Iterable<K> {
 		lruCache.cache("d", 4);
 		lruCache.cache("b", 5);
 
+		//IntStream.of ()
+
 		System.out.println(StreamSupport.stream (lruCache.spliterator (), false)
 		.map (x-> x.toString ()).collect (Collectors.joining ("<-")));
 	}

@@ -2,6 +2,8 @@ package com.ds.demo.moc.sort;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
+
 /**
  * @author Administrator
  * @version V1.0
@@ -222,6 +224,23 @@ public class SortDemo {
 		}
 		for (i = 0; i < help.length; i++) {
 			arr[L + i] = help[i];
+		}
+	}
+
+	public static void merge_new2(int[] arr, int L, int M, int R) {
+		//多拷贝一个数组位置放置哨兵元素，作为边界值判断
+		int [] A = Arrays.copyOfRange (arr, L, M+1);
+		int [] B = Arrays.copyOfRange (arr, M, R+1); //不会越界， copyOfRange方法具有保护作用， 如果越界了会填充默认值
+
+		A[A.length - 1] = B[B.length-1] = Integer.MIN_VALUE;
+
+		int i = 0, j=0;
+		for (int k = 0; k < arr.length; k++) {
+			if (A[i] < B[j]) {
+			   arr[k] = A[i++];
+			} else {
+				arr[k] = B[j++];
+			}
 		}
 	}
 
